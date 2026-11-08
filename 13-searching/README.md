@@ -70,4 +70,4 @@ return -1
 ## 🔗 Resources
 
 - [Binary search — the whole picture](https://leetcode.com/explore/learn/card/binary-search/)
-- [Binary search on answer pattern](https://medium.com/)
+- [Binary search — GeeksforGeeks](https://www.geeksforgeeks.org/binary-search/)
