@@ -47,6 +47,8 @@ It is **language-agnostic**: implement everything in C, C++, Java, Python, JavaS
 data-structure/
 │
 ├── README.md                    ← you are here (handbook + cheat sheets)
+├── run.sh                       ← compile & run any .cpp from the terminal
+├── .gitignore                   ← keeps binaries out of git
 ├── assets/                      ← diagrams & charts
 │   └── big-o-complexity-chart.svg
 │
@@ -433,11 +435,28 @@ Follow this sequence every time — it turns "I'm stuck" into a repeatable proce
 1. **Read** the `README.md` inside a topic folder — theory, complexity tables, and patterns.
 2. **Implement** each data structure from scratch in your language of choice — the real learning happens here.
 3. **Solve** the listed problems into that topic's `problems/` folder:
-   - Naming: `two_sum.py`, `reverse_linked_list.cpp`, `valid_parentheses.java`
+   - Naming: `two_sum.cpp`, `reverse_linked_list.cpp`, `valid_parentheses.java` (any language works)
    - Add a short header comment: pattern used + complexity.
 4. **Write** a `problems/NOTES.md` per topic — what clicked, what didn't (your future self will thank you).
 5. **Revisit** — re-solve problems after a week; spaced repetition is how patterns stick.
 6. **Track** — tick items in the [Progress Tracker](#progress).
+
+> ⚡ **C++ workflow (VS Code):** this repo ships `.vscode/tasks.json` — open any `.cpp` file inside a topic's `problems/` folder, then **Terminal → Run Task → "C++: Run Current File"**. It compiles with `g++ -std=c++17 -Wall -Wextra -g` and executes in one step, with the `.exe` placed beside your source (binaries are git-ignored, so the repo stays clean).
+
+### 🖥️ Terminal workflow (`run.sh`)
+
+The same build, straight from **Git Bash / Linux / macOS** — with debug, release, and sanitizer modes plus smart rebuilds (it only recompiles when the source changed):
+
+```bash
+./run.sh 01-arrays/problems/two_sum.cpp            # debug build + run
+./run.sh -r 01-arrays/problems/two_sum.cpp         # release build (-O2)
+./run.sh -s 07-recursion-and-backtracking/problems/n_queens.cpp   # AddressSanitizer + UBSan
+./run.sh 01-arrays/problems/two_sum.cpp input.txt  # args after the file → your program
+./run.sh --clean 01-arrays/problems/two_sum.cpp    # remove the compiled binary
+./run.sh --help                                    # all options
+```
+
+> The binary lands next to your source (git-ignored), and the script mirrors the VS Code task's flags — pick whichever workflow suits the moment.
 
 ---
 

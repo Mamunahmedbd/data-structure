@@ -1,0 +1,14 @@
+# Normalize line endings for text files
+* text=auto
+
+# Shell scripts must stay LF (CRLF breaks them in Git Bash / Linux / WSL)
+*.sh text eol=lf
+
+# Windows scripts stay CRLF
+*.ps1 text eol=crlf
+
+# Binary types
+*.exe binary
+*.png binary
+*.jpg binary
+*.webp binary

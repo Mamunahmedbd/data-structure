@@ -1,0 +1,19 @@
+# Compiled C/C++ binaries & objects
+*.exe
+*.o
+*.obj
+*.out
+*.a
+
+# Build directories
+build/
+debug/
+release/
+
+# OS cruft
+Thumbs.db
+Desktop.ini
+
+# Python (if you ever add Python solutions)
+__pycache__/
+*.pyc
