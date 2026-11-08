@@ -2,6 +2,14 @@
 
 > A contiguous block of memory holding elements of the same type, accessed by index — the simplest and most used data structure.
 
+## 💻 Worked Example (C++)
+
+[`examples/arrays_guide.cpp`](./examples/arrays_guide.cpp) — one compilable, heavily-commented file covering this whole README: memory layout & O(1) access, `std::array` vs `std::vector`, every core operation implemented by hand, matrices, all five patterns (two pointers, sliding window, prefix sum, Kadane, index-as-hash), and a real-world analytics use case.
+
+```bash
+./run.sh 01-arrays/examples/arrays_guide.cpp    # from the repo root
+```
+
 ## 📖 Overview
 
 - Elements sit **next to each other in memory**, which is why index access is instant: `address = base + index × element_size`.

@@ -47,7 +47,7 @@ It is **language-agnostic**: implement everything in C, C++, Java, Python, JavaS
 data-structure/
 │
 ├── README.md                    ← you are here (handbook + cheat sheets)
-├── run.sh                       ← compile & run any .cpp from the terminal
+├── run.ps1 / run.sh             ← compile & run any .cpp (PowerShell / bash)
 ├── .gitignore                   ← keeps binaries out of git
 ├── assets/                      ← diagrams & charts
 │   └── big-o-complexity-chart.svg
@@ -443,20 +443,33 @@ Follow this sequence every time — it turns "I'm stuck" into a repeatable proce
 
 > ⚡ **C++ workflow (VS Code):** this repo ships `.vscode/tasks.json` — open any `.cpp` file inside a topic's `problems/` folder, then **Terminal → Run Task → "C++: Run Current File"**. It compiles with `g++ -std=c++17 -Wall -Wextra -g` and executes in one step, with the `.exe` placed beside your source (binaries are git-ignored, so the repo stays clean).
 
-### 🖥️ Terminal workflow (`run.sh`)
+### 🖥️ Terminal workflow (`run.ps1` · `run.sh`)
 
-The same build, straight from **Git Bash / Linux / macOS** — with debug, release, and sanitizer modes plus smart rebuilds (it only recompiles when the source changed):
+The same build, straight from your terminal — debug, release, and sanitizer modes plus smart rebuilds (recompiles only when the source changed). Pick the script for your shell:
+
+**PowerShell** (VS Code's default terminal on Windows):
+
+```powershell
+.\run.ps1 01-arrays\examples\arrays_guide.cpp       # debug build + run
+.\run.ps1 -Release 01-arrays\problems\two_sum.cpp   # release build (-O2)
+.\run.ps1 -Sanitize 07-recursion-and-backtracking\problems\n_queens.cpp
+.\run.ps1 13-searching\problems\binary_search.cpp 42   # args after the file → your program
+.\run.ps1 -Clean 01-arrays\problems\two_sum.cpp     # remove the compiled binary
+.\run.ps1 -Help                                     # all options
+```
+
+**Git Bash / Linux / macOS:**
 
 ```bash
 ./run.sh 01-arrays/problems/two_sum.cpp            # debug build + run
 ./run.sh -r 01-arrays/problems/two_sum.cpp         # release build (-O2)
-./run.sh -s 07-recursion-and-backtracking/problems/n_queens.cpp   # AddressSanitizer + UBSan
-./run.sh 01-arrays/problems/two_sum.cpp input.txt  # args after the file → your program
-./run.sh --clean 01-arrays/problems/two_sum.cpp    # remove the compiled binary
+./run.sh -s 01-arrays/problems/two_sum.cpp         # sanitizers (ASan + UBSan)
 ./run.sh --help                                    # all options
 ```
 
-> The binary lands next to your source (git-ignored), and the script mirrors the VS Code task's flags — pick whichever workflow suits the moment.
+> ⚠️ `./run.sh` does nothing in PowerShell (bash scripts aren't executed there) — use `.\run.ps1`, or `bash ./run.sh …` if you only have the bash script handy.
+> If PowerShell blocks the script ("running scripts is disabled"), allow local scripts once: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
+> Both scripts place the binary next to your source (git-ignored) and mirror the VS Code task's flags.
 
 ---
 
