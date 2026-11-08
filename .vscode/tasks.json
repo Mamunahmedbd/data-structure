@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C++: Compile Current File",
+            "type": "process",
+            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+            "args": [
+                "-std=c++17",
+                "-Wall",
+                "-Wextra",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "C++: Run Current File",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": [
+                "-NoProfile",
+                "-Command",
+                "& './${fileBasenameNoExtension}.exe'"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "dependsOn": "C++: Compile Current File",
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            }
+        }
+    ]
+}
