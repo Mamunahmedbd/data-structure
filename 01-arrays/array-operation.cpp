@@ -15,7 +15,7 @@ int main() {
   // update index
   arr[0] = 15;
 
-  // search for 40
+  // search for 40 which is called Linear Search
   for (int i = 0; i < n; i++) {
     if (arr[i] == 40) {
       cout << "Found at : Index " << i << endl;
