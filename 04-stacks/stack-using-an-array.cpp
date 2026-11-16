@@ -8,6 +8,7 @@ private:
 
 public:
   void push(int value) {
+    // check overflow condition
     if (topIndex == 4) {
       cout << "Stack Overflow" << endl;
       return;
