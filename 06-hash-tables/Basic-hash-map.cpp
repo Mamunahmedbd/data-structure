@@ -28,3 +28,12 @@ int main() {
 
   return 0;
 }
+
+// Time complexity summary
+// Operation	unordered_map	map
+// Insert	O(1) average	O(log n)
+// Search	O(1) average	O(log n)
+// Delete	O(1) average	O(log n)
+// Access by key	O(1) average	O(log n)
+// Sorted iteration	Not supported directly	O(n)
+// Space	O(n)	O(n)
